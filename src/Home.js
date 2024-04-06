@@ -1,4 +1,5 @@
 import {useState} from "react"
+import DeckList from "./DeckList";
 
 const Home = () => {
     const [decks, setDecks] = new useState([
@@ -10,11 +11,7 @@ const Home = () => {
 
     return ( 
         <div className = "home">
-            {decks.map(deck=>(
-                <div className = "deck">
-                    <h2>{deck.name}</h2>
-                </div>
-            ))}
+            <DeckList decks = {decks}/>
         </div>
      );
 }
