@@ -3,9 +3,12 @@ import DeckList from "./DeckList";
 
 const Home = () => {
     const [decks, setDecks] = new useState([
-        {name: 'Spanish'},
-        {name: "Hindi"},
-        {name: "Chinese"}
+        {
+            name: "Spanish",
+            cards: [
+                ["hello", "hola"]
+            ]
+        }
     ]
     );
 
