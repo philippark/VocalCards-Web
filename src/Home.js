@@ -5,8 +5,14 @@ const Home = () => {
     const [decks, setDecks] = new useState([
         {
             name: "Spanish",
-            cards: [
+            flashcards: [
                 ["hello", "hola"]
+            ]
+        },
+        {
+            name: "Hindi",
+            flashcards: [
+                ["Hello", "Namaste"]
             ]
         }
     ]

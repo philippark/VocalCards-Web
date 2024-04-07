@@ -1,7 +1,7 @@
 import './App.css';
 import Navbar from './Navbar.js'
 import Home from './Home.js'
-import Card from './Card.js'
+import Card from './FlashCard.js'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom/cjs/react-router-dom.min.js';
 
 function App() {
