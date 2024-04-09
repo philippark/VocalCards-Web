@@ -1,10 +1,14 @@
+import { Link } from 'react-router-dom';
+
 const DeckList = ({decks}) => {
     return ( 
         <div className = "deck-list">
             {decks.map(deck=>(
                 <div className = "deck">
-                    <h2>{deck.name}</h2>
-                    <h2>{deck.flashcards[0][0]}</h2>
+                    <Link to={`/decks/${deck.name}`}>
+                        <h2>{deck.name}</h2>
+                    </Link>
+                
                 </div>
             ))}
         </div>
