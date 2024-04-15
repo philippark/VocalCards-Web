@@ -1,0 +1,10 @@
+{
+    "decks": [
+    {
+        "name": "Spanish",
+        "flashcards": [
+            ["hello", "hola"]
+        ]
+    }
+    ]
+}
