@@ -4,12 +4,11 @@ const DeckList = ({decks}) => {
     return ( 
         <div className = "deck-list">
             {decks.map(deck=>(
-                <div className = "deck">
-                    <Link to={`/decks/${deck.name}`}>
+                <Link to={`/decks/${deck.name}`}>
+                    <div className = "deck">
                         <h2>{deck.name}</h2>
-                    </Link>
-                
-                </div>
+                    </div>
+                </Link>
             ))}
         </div>
      );

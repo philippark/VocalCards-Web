@@ -1,26 +1,20 @@
-import {useState} from "react"
+import {useEffect, useState} from "react"
 import DeckList from "./DeckList";
 
 const Home = () => {
-    const [decks, setDecks] = new useState([
-        {
-            name: "Spanish",
-            flashcards: [
-                ["hello", "hola"]
-            ]
-        },
-        {
-            name: "Hindi",
-            flashcards: [
-                ["Hello", "Namaste"]
-            ]
-        }
-    ]
-    );
+    const [decks, setDecks] = new useState(null);
+    
+    useEffect( ()=>{
+        fetch("http://localhost:8000/decks").then(res => {
+            return res.json();
+        }).then(data => {
+            setDecks(data);
+        })
+    }, [])
 
     return ( 
         <div className = "home">
-            <DeckList decks = {decks}/>
+            {decks && <DeckList decks = {decks}/>}
         </div>
      );
 }
