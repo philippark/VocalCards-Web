@@ -5,6 +5,13 @@
         "flashcards": [
             ["hello", "hola"]
         ]
+    },
+    {
+        "name": "Russian",
+        "flashcards":[
+            ["hello", "privet"]
+        ]
     }
+
     ]
 }

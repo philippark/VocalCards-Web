@@ -4,6 +4,8 @@ import Home from './Home.js'
 import FlashCard from './FlashCard.js'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom/cjs/react-router-dom.min.js';
 
+import BlogDetails from './BlogDetails.js';
+
 function App() {
   return (
     <Router>
@@ -13,6 +15,9 @@ function App() {
           <Switch>
               <Route exact path = "/">
                 <Home/>
+              </Route>
+              <Route path="/decks/:id">
+                <BlogDetails />
               </Route>
           </Switch>
         </div>

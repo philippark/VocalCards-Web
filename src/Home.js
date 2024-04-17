@@ -1,20 +1,15 @@
 import {useEffect, useState} from "react"
 import DeckList from "./DeckList";
+import useFetch from "./useFetch";
 
 const Home = () => {
-    const [decks, setDecks] = new useState(null);
-    
-    useEffect( ()=>{
-        fetch("http://localhost:8000/decks").then(res => {
-            return res.json();
-        }).then(data => {
-            setDecks(data);
-        })
-    }, [])
+    const { error, isPending, data: decks } = useFetch('http://localhost:8000/decks')
 
     return ( 
         <div className = "home">
-            {decks && <DeckList decks = {decks}/>}
+            { error && <div>{ error }</div> }
+            { isPending && <div>Loading...</div> }
+            { decks && <DeckList decks={decks} /> }
         </div>
      );
 }
