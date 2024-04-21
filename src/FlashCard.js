@@ -12,7 +12,11 @@ const FlashCard = () => {
         <div className = "card-content">
             {isPending && <h2>Loading...</h2>}
             { error && <div>{ error }</div> }
-            { deck && {deck} }
+            {deck && 
+            <div>
+                <h2>{deck.flashcards[0][0]}</h2>
+            </div>
+            }
         </div>
         
     );
