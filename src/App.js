@@ -16,8 +16,8 @@ function App() {
               <Route exact path = "/">
                 <Home/>
               </Route>
-              <Route path="/decks/:id">
-                <BlogDetails />
+              <Route path="/decks/:name">
+                <FlashCard />
               </Route>
           </Switch>
         </div>
