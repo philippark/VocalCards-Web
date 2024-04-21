@@ -4,7 +4,7 @@ const DeckList = ({decks}) => {
     return ( 
         <div className = "deck-list">
             {decks.map(deck=>(
-                <Link to={`/decks/${deck.name}`}>
+                <Link to={`/decks/${deck.id}`}>
                     <div className = "deck">
                         <h2>{deck.name}</h2>
                     </div>
