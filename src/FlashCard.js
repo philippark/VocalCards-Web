@@ -2,6 +2,8 @@ import {useState} from 'react';
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import useFetch from './useFetch';
+import Front from './Front.js';
+import Back from './Back.js';
 
 const FlashCard = () => {
     const {id} = useParams()
@@ -11,16 +13,6 @@ const FlashCard = () => {
     const [showAnswer, setShowAnswer] = new useState(false);
     const [flashcardIndex, setFlashcardIndex] = new useState(0);
 
-    const handleClick = () => {
-        setShowAnswer(!showAnswer);
-
-        if (showAnswer) {
-            let i = flashcardIndex;
-            i+=1;
-            setFlashcardIndex(i);
-        }
-    }
-
     return (
         <div className = "card-content">
             {isPending && <h2>Loading...</h2>}
@@ -28,19 +20,9 @@ const FlashCard = () => {
             {deck && 
             <div className = "flashcard-content">
                 {showAnswer ?
-                <div className = "post-answer">
-
-                    <p>{deck.flashcards[flashcardIndex][1]}</p>
-
-                    <button onClick={handleClick}>Again</button>
-                    <button onClick={handleClick}>Pass</button>
-                </div>
+                <Back/>
                 :
-                <div className = "pre-answer">
-                    <p>{deck.flashcards[flashcardIndex][0]}</p>
-
-                    <button onClick={handleClick}>Show Answer</button>
-                </div>
+                <Front />
                 }
             </div>
             }
