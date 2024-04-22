@@ -3,7 +3,8 @@
     {
         "name": "Spanish",
         "flashcards": [
-            ["hello", "hola"]
+            ["hello", "hola"],
+            ["good", "bien"]
         ],
         "id": "1"
     },
