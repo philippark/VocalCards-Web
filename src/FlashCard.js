@@ -5,7 +5,8 @@ import useFetch from './useFetch';
 import Front from './Front.js';
 import Back from './Back.js';
 
-const FlashCard = () => {
+const FlashCard = (flashcard) => {
+    
     const {id} = useParams()
 
     const { error, isPending, data: deck } = useFetch('http://localhost:8000/decks/' + id)
@@ -45,7 +46,7 @@ const FlashCard = () => {
                     </div>
                     :
                     <div>
-                        <button onClick={clickHandle} class = "user-option">Change</button>
+                        <button onClick={clickHandle} class = "user-option">Show Answer</button>
                     </div>
                     }
                 </div>

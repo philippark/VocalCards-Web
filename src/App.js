@@ -5,6 +5,7 @@ import FlashCard from './FlashCard.js'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom/cjs/react-router-dom.min.js';
 
 import BlogDetails from './BlogDetails.js';
+import FlashCardList from './FlashCardList.js';
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
                 <Home/>
               </Route>
               <Route path="/decks/:id">
-                <FlashCard />
+                <FlashCardList />
               </Route>
           </Switch>
         </div>
