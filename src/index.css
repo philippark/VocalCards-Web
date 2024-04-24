@@ -58,3 +58,35 @@ code {
   font-size: 20px;
   margin-bottom: 8px;
 }
+
+.flashcard-content{
+  background-color: lightblue;
+
+}
+
+.flashcard-buttons{
+  background-color: lightblue;
+}
+
+.flashcard-options{
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+}
+
+.user-option{
+  background-color: #04AA6D; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+
+  flex-grow: 1;
+}
