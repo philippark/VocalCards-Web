@@ -60,12 +60,8 @@ code {
 }
 
 .flashcard-content{
-  background-color: lightblue;
-
-}
-
-.flashcard-buttons{
-  background-color: lightblue;
+  font-size: 18px;
+  font-weight: 500;
 }
 
 .flashcard-options{

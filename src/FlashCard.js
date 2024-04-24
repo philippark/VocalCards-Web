@@ -23,28 +23,32 @@ const FlashCard = () => {
             { error && <div>{ error }</div> }
             {deck && 
 
-            <div className = "flashcard">
-
-                {/*
+            <div>              
                 <div className = "flashcard-content">
-                <p>{"hola, esta bien?"}</p>
-                
-                {showAnswer ? <p>si</p>: ""}
+                    <p>{"hola, esta bien?"}</p>
+                    
+                    {showAnswer ?
+                    <div>
+                        <hr></hr>
+                        <p>si</p>
+                    </div>
+                    : 
+                    ""}
                 </div>
+            
 
-                
-                {showAnswer ? 
-                <div className = "flashcard-buttons">
-                <button onClick={clickHandle}>Again</button>
-                <button onClick={clickHandle}>Pass</button>
+                <div className = "flashcard-options">
+                    {showAnswer ? 
+                    <div>
+                        <button onClick={clickHandle} class = "user-option">Again</button>
+                        <button onClick={clickHandle} class = "user-option">Pass</button>
+                    </div>
+                    :
+                    <div>
+                        <button onClick={clickHandle} class = "user-option">Change</button>
+                    </div>
+                    }
                 </div>
-                :
-                <div className = "flashcard-buttons">
-                <button onClick={clickHandle}>Change</button>
-                </div>
-                
-                
-                */}
                 
 
             </div>
