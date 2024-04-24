@@ -6,7 +6,7 @@ import Front from './Front.js';
 import Back from './Back.js';
 
 const FlashCard = (flashcard) => {
-    
+
     const {id} = useParams()
 
     const { error, isPending, data: deck } = useFetch('http://localhost:8000/decks/' + id)
@@ -20,10 +20,6 @@ const FlashCard = (flashcard) => {
 
     return (
         <div className = "card-content">
-            {isPending && <h2>Loading...</h2>}
-            { error && <div>{ error }</div> }
-            {deck && 
-
             <div>              
                 <div className = "flashcard-content">
                     <p>{"hola, esta bien?"}</p>
@@ -54,7 +50,7 @@ const FlashCard = (flashcard) => {
 
             </div>
 
-            }
+            
         </div>
         
     );

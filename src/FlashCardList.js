@@ -16,11 +16,12 @@ const FlashCardList = () => {
 
     return ( 
         <div>
-            { 
+            {isPending && <h2>Loading...</h2>}
+            { error && <div>{ error }</div> }
+            {deck && 
+
             cards.map(flashcard => (
-                <div>
-                    <h1>{flashcard}</h1>
-                </div>
+                <FlashCard flashcard = {flashcard}/>
 
             ))
             }
