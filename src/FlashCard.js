@@ -22,12 +22,12 @@ const FlashCard = (flashcard) => {
         <div className = "card-content">
             <div>              
                 <div className = "flashcard-content">
-                    <p>{"hola, esta bien?"}</p>
+                    <p>{flashcard.flashcard[0]}</p>
                     
                     {showAnswer ?
                     <div>
                         <hr></hr>
-                        <p>si</p>
+                        <p>{flashcard.flashcard[1]}</p>
                     </div>
                     : 
                     ""}

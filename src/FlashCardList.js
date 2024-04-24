@@ -21,7 +21,9 @@ const FlashCardList = () => {
             {deck && 
 
             cards.map(flashcard => (
+                <div>
                 <FlashCard flashcard = {flashcard}/>
+                </div>
 
             ))
             }
