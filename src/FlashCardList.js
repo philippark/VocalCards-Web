@@ -15,6 +15,10 @@ const FlashCardList = () => {
     if (deck){
         cards = deck.flashcards
     }
+
+    const clickHandle = () => {
+        setIndex(1);
+    }
     
 
     return ( 
@@ -22,7 +26,9 @@ const FlashCardList = () => {
             {isPending && <h2>Loading...</h2>}
             { error && <div>{ error }</div> }
             {deck && 
-            <FlashCard flashcard={deck.flashcards[index]} />
+            <div>
+                <FlashCard flashcard={deck.flashcards[index]} index = {index} setIndex={setIndex} />
+            </div>
             }
         </div>
      );

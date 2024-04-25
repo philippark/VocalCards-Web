@@ -5,12 +5,17 @@ import useFetch from './useFetch';
 import Front from './Front.js';
 import Back from './Back.js';
 
-const FlashCard = ({flashcard}) => {
+const FlashCard = ({flashcard, index, setIndex}) => {
 
     const [showAnswer, setShowAnswer] = new useState(false);
 
-    const clickHandle = () => {
-        setShowAnswer(!showAnswer);
+    const clickShowAnswer = () => {
+        setShowAnswer(true);
+    }
+
+    const clickAnswerOptions = () => {
+        setIndex(index+1);
+        setShowAnswer(false)
     }
 
     return (
@@ -32,12 +37,12 @@ const FlashCard = ({flashcard}) => {
                 <div className = "flashcard-options">
                     {showAnswer ? 
                     <div>
-                        <button onClick={clickHandle} class = "user-option">Again</button>
-                        <button onClick={clickHandle} class = "user-option">Pass</button>
+                        <button onClick={clickAnswerOptions} class = "user-option">Again</button>
+                        <button onClick={clickAnswerOptions} class = "user-option">Pass</button>
                     </div>
                     :
                     <div>
-                        <button onClick={clickHandle} class = "user-option">Show Answer</button>
+                        <button onClick={clickShowAnswer} class = "user-option">Show Answer</button>
                     </div>
                     }
                 </div>
