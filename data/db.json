@@ -1,21 +1,37 @@
 {
-    "decks": [
+  "decks": [
     {
-        "name": "Spanish",
-        "flashcards": [
-            ["hello", "hola"],
-            ["good", "bien"],
-            ["hola, estas bien?", "si, estoy bien"]
+      "name": "Spanish",
+      "flashcards": [
+        [
+          "hello",
+          "hola"
         ],
-        "id": "1"
+        [
+          "good",
+          "bien"
+        ],
+        [
+          "hola, estas bien?",
+          "si, estoy bien"
+        ]
+      ],
+      "id": "1"
     },
     {
-        "name": "Russian",
-        "flashcards":[
-            ["hello", "privet"]
-        ],
-        "id": "2"
+      "name": "Russian",
+      "flashcards": [
+        [
+          "hello",
+          "privet"
+        ]
+      ],
+      "id": "2"
+    },
+    {
+      "id": "926f",
+      "name": "French",
+      "flashcards": []
     }
-
-    ]
+  ]
 }
