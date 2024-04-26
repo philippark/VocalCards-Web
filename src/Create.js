@@ -18,6 +18,7 @@ const Create = () => {
             body: JSON.stringify(deck)
         }).then(() => {
             history.push('/');
+            window.location.reload();
         })
     }
 
