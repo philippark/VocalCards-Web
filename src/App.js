@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom/cjs/rea
 
 import BlogDetails from './BlogDetails.js';
 import FlashCardList from './FlashCardList.js';
+import Create from './Create.js';
 
 function App() {
   return (

@@ -1,7 +1,13 @@
+import Popup from "reactjs-popup";
+import { useState } from "react";
+
 const Create = () => {
+    const [name, setName] = useState("");
     return ( 
         <div className="create">
-            <h2>Add a deck</h2>
+            <input type = "text" required value = {name} onChange = {(e)=>setName(e.target.value)}/>
+            <button>Ok</button>
+            <button>Cancel</button>
         </div>
      );
 }

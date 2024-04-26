@@ -4,7 +4,8 @@
         "name": "Spanish",
         "flashcards": [
             ["hello", "hola"],
-            ["good", "bien"]
+            ["good", "bien"],
+            ["hola, estas bien?", "si, estoy bien"]
         ],
         "id": "1"
     },
