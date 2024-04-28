@@ -5,54 +5,42 @@ import { useEffect, useState } from 'react';
 
 const DeckList = ({decks}) => {
 
-    const [clicked, setClicked] = useState(true);
-    const [points, setPoints] = useState({x:0,y:0});
-
-    useEffect(()=>{
-        const handleClick = () => setClicked(false);
-
-        window.addEventListener("click", handleClick);
-        return () => {
-            window.removeEventListener("click", handleClick);
+    const {contextMenu, setContextMenu} = useState(
+        {
+            position: {
+                x:0,
+                y:0
+            },
+            toggled: false
         }
-    }, []);
+    )
+
+    function handleOnContextMenu(e, rightClickDeck){
+        e.preventDefault();
+
+    }
 
     return ( 
         <div className = "deck-list">
-            {/*
+            
             {decks.map(deck=>(
                 
                 <Link to={`/decks/${deck.id}`}>
-                    <div className = "deck"  onContextMenu={(e)=>{e.preventDefault(); console.log("right clicked")}} >
+                    <div className = "deck"  onContextMenu={(e)=>handleOnContextMenu(e, deck)} >
                         <h2>{deck.name}</h2>
                     </div>
                 </Link>
-            */}
-
-            {decks.map(deck => (
-                <div onContextMenu={(e)=>{
-                    e.preventDefault();
-                    setClicked(true);
-                    setPoints({
-                        x: e.pageX,
-                        y: e.pageY
-                    });
-                    console.log("Right clicked", e.pageX, e.pageY);
-                
-                    }}>
+            )
+            )   
+            }
+            
+            {
+            /*decks.map(deck => (
+                <div>
                     <Menu name = {deck.name}/>
                 </div>
-            ))}
-
-            {clicked && 
-            <onContextMenu top = {points.y} left = {points.x}>
-                <ul>
-                    <li>Edit</li>
-                    <li>Copy</li>
-                    <li>Delete</li>
-                </ul>
-            </onContextMenu>
-            }
+            ))
+        */}
 
         </div>
      );
