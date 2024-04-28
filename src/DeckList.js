@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
-import MenuContext from './MenuContext';
-import Menu from './Menu';
 import { useEffect, useState } from 'react';
+import { useRef } from 'react';
+import ContextMenu from './ContextMenu';
 
 const DeckList = ({decks}) => {
-
-    const {contextMenu, setContextMenu} = useState(
+    const contextMenuRef = useRef(null);
+    const [contextMenu, setContextMenu] = useState(
         {
             position: {
                 x:0,
@@ -18,6 +18,30 @@ const DeckList = ({decks}) => {
     function handleOnContextMenu(e, rightClickDeck){
         e.preventDefault();
 
+        const contextMenuAttr = contextMenuRef.current.getBoundingClientRect()
+
+        const isLeft = e.clientX < window?.innerWidth/2
+
+        let x 
+        let y = e.clientY
+
+        if (isLeft){
+            x = e.clientX
+        }
+        else{
+            x = e.clientX - contextMenuAttr.width
+        }
+
+        setContextMenu({
+            position: {
+                x,
+                y
+            },
+            toggled: true
+        })
+
+        alert("CM")
+
     }
 
     return ( 
@@ -26,21 +50,36 @@ const DeckList = ({decks}) => {
             {decks.map(deck=>(
                 
                 <Link to={`/decks/${deck.id}`}>
-                    <div className = "deck"  onContextMenu={(e)=>handleOnContextMenu(e, deck)} >
-                        <h2>{deck.name}</h2>
+                    <div className = "deck"  >
+                        <h2 onContextMenu={(e)=>handleOnContextMenu(e, deck)} >{deck.name}</h2>
                     </div>
                 </Link>
             )
             )   
             }
-            
-            {
-            /*decks.map(deck => (
-                <div>
-                    <Menu name = {deck.name}/>
-                </div>
-            ))
-        */}
+
+            <ul>
+                <ContextMenu 
+                    contextMenuRef={contextMenuRef}
+                    isToggled={contextMenu.toggled}
+                    positionX={contextMenu.position.x}
+                    positionY={contextMenu.position.y}
+                    buttons={[
+                        {
+                            text: "Delete",
+                            onClick: () => alert("Delete"),
+                            isSpacer: false
+                        },
+                        {
+                            text:"Edit",
+                            onClick: () => alert("Edit"),
+                            isSpacer: false
+                        }
+                        ]   
+                    }
+
+                />
+            </ul>
 
         </div>
      );
