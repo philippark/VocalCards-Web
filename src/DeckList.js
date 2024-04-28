@@ -59,6 +59,16 @@ const DeckList = ({decks}) => {
             }
 
             <ul>
+                {decks.map(deck=>{
+                    return (
+                        <li onContextMenu={(e)=>handleOnContextMenu(e, deck)} >
+                        {deck.name}
+                        </li>
+                    )
+                })}
+            </ul>
+
+            <ul>
                 <ContextMenu 
                     contextMenuRef={contextMenuRef}
                     isToggled={contextMenu.toggled}
