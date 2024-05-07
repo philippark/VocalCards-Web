@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom/cjs/rea
 
 import BlogDetails from './BlogDetails.js';
 import FlashCardList from './FlashCardList.js';
-import Create from './Create.js';
+import FlashcardDetails from './FlashcardDetails.js';
 
 function App() {
   return (
@@ -20,6 +20,9 @@ function App() {
               </Route>
               <Route path="/decks/:id">
                 <FlashCardList />
+              </Route>
+              <Route exact path = "/create">
+                <FlashcardDetails/>
               </Route>
           </Switch>
         </div>

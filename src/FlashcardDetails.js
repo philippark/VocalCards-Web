@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 
 const Create = () => {
     const [name, setName] = useState("");
-    const flashcards = [];
+    const [flashcards, setFlashcards] = useState([["a","b"]]);
 
     const history = useHistory();
 
@@ -24,11 +24,23 @@ const Create = () => {
 
     return ( 
         <div className="create">
-            <form onSubmit={handleSubmit}>
-                <input type = "text" required value = {name} onChange = {(e)=>setName(e.target.value)}/>
-                <button>Ok</button>
-                <button>Cancel</button>
-            </form>
+            <p>Set Title</p>
+            <input type = "text" required value = {name} onChange = {(e)=>setName(e.target.value)}/>
+
+            <p>Front</p>
+            <p>Back</p>
+            <button onClick={() => {setFlashcards([...flashcards, ["",""]]);}}>Add a new card</button>
+
+            {flashcards.map(flashcard=>(
+                <div>
+                    <input type = "text" value = {flashcard[0]} onChange = {(e)=>alert(flashcard[0])} />
+                    <input type = "text" value = {flashcard[1]}/>
+                </div>
+            ))}
+
+
+            <p>Finish</p>
+            <button>Create set</button>
         </div>
      );
 }
