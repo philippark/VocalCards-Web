@@ -4,7 +4,20 @@ import { useHistory } from "react-router-dom";
 
 const Create = () => {
     const [name, setName] = useState("");
-    const [flashcards, setFlashcards] = useState([["a","b"]]);
+    const [flashcards, setFlashcards] = useState(
+        [
+            {
+                "id":"1",
+                "front": "a",
+                "back": "b"
+            },
+            {
+                "id":"2",
+                "front":"hello",
+                "back":"privet"
+            }
+        ]
+    );
 
     const history = useHistory();
 
@@ -22,19 +35,39 @@ const Create = () => {
         })
     }
 
+    const updateCard = (id, new_front, new_back) => {
+
+        const updatedFlashcards = flashcards.map(flashcard=>{
+            if (flashcard.id == id){
+                return {
+                    id,
+                    front: new_front,
+                    back: new_back
+                }
+                
+            }
+            else{
+                return flashcard;
+            }
+        })
+
+        setFlashcards(updatedFlashcards);
+    }
+
     return ( 
         <div className="create">
             <p>Set Title</p>
             <input type = "text" required value = {name} onChange = {(e)=>setName(e.target.value)}/>
 
-            <p>Front</p>
-            <p>Back</p>
+            <p>Flashcards</p>
+
             <button onClick={() => {setFlashcards([...flashcards, ["",""]]);}}>Add a new card</button>
 
             {flashcards.map(flashcard=>(
                 <div>
-                    <input type = "text" value = {flashcard[0]} onChange = {(e)=>alert(flashcard[0])} />
-                    <input type = "text" value = {flashcard[1]}/>
+                    <input type = "text" value = {flashcard.front} onChange = {(e)=>updateCard(flashcard.id, e.target.value, flashcard.back)} />
+                    <input type = "text" value = {flashcard.back} onChange = {(e)=>updateCard(flashcard.id, flashcard.front, e.target.value)} />
+
                 </div>
             ))}
 
