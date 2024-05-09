@@ -27,12 +27,20 @@ const DeckList = ({decks}) => {
                 */
                 
                 <div className = "deck"  key={index}>
-                    <h2>{deck.name}</h2>
-                    <Link to={`/edit/${deck.id}`}>
-                        <button>Edit</button>
-                    </Link>
-                    <button onClick={()=> handleDelete(deck.id)}>Delete</button>
                     
+                    <Link to={`/decks/${deck.id}`}>
+                    <div>
+
+                        <h2>{deck.name}</h2>
+                        
+                    </div>
+                    </Link>
+                    <div>
+                        <Link to={`/edit/${deck.id}`}>
+                            <button>Edit</button>
+                        </Link>
+                        <button onClick={()=> handleDelete(deck.id)}>Delete</button>
+                    </div>
                 </div>
                 
             )
