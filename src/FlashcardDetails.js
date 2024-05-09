@@ -6,21 +6,13 @@ const Create = () => {
     const [name, setName] = useState("");
     const [flashcards, setFlashcards] = useState(
         [
-            {
-                "id":"1",
-                "front": "a",
-                "back": "b"
-            },
-            {
-                "id":"2",
-                "front":"hello",
-                "back":"privet"
-            }
+            ["front", "back"]
         ]
     );
 
     const history = useHistory();
 
+    
     const handleSubmit = (e) => {
         e.preventDefault();
         const deck = { name, flashcards};
@@ -35,15 +27,15 @@ const Create = () => {
         })
     }
 
-    const updateCard = (id, new_front, new_back) => {
+    //updating a input form
+    const updateCard = (target_index, new_front, new_back) => {
 
-        const updatedFlashcards = flashcards.map(flashcard=>{
-            if (flashcard.id == id){
-                return {
-                    id,
-                    front: new_front,
-                    back: new_back
-                }
+        const updatedFlashcards = flashcards.map((flashcard, index)=>{
+            if (index === target_index){
+                return [
+                    new_front,
+                    new_back
+                ]
                 
             }
             else{
@@ -63,17 +55,18 @@ const Create = () => {
 
             <button onClick={() => {setFlashcards([...flashcards, ["",""]]);}}>Add a new card</button>
 
-            {flashcards.map(flashcard=>(
+            {flashcards.map((flashcard, index)=>(
                 <div>
-                    <input type = "text" value = {flashcard.front} onChange = {(e)=>updateCard(flashcard.id, e.target.value, flashcard.back)} />
-                    <input type = "text" value = {flashcard.back} onChange = {(e)=>updateCard(flashcard.id, flashcard.front, e.target.value)} />
+                    <p>{index}</p>
+                    <input type = "text" value = {flashcard[0]} onChange = {(e)=>updateCard(index, e.target.value, flashcard[1])} />
+                    <input type = "text" value = {flashcard[1]} onChange = {(e)=>updateCard(index, flashcard[0], e.target.value)} />
 
                 </div>
             ))}
 
 
             <p>Finish</p>
-            <button>Create set</button>
+            <button onClick={handleSubmit}>Create set</button>
         </div>
      );
 }
