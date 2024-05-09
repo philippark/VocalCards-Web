@@ -21,7 +21,7 @@ function App() {
               <Route path="/decks/:id">
                 <FlashCardList />
               </Route>
-              <Route exact path = "/create">
+              <Route exact path = "/edit/:id">
                 <FlashcardDetails/>
               </Route>
           </Switch>

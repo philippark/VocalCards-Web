@@ -1,19 +1,41 @@
 import Popup from "reactjs-popup";
-import { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useEffect, useState} from "react";
+import useFetch from './useFetch'
+import { useHistory, useParams} from "react-router-dom";
 
 const Create = () => {
+    const {id} = useParams();
+
     const [name, setName] = useState("");
     const [flashcards, setFlashcards] = useState(
         [
-            ["front", "back"]
         ]
     );
+
+    const { error, isPending, data: deck } = useFetch('http://localhost:8000/decks/' + id);
+
+    useEffect(()=>{
+        if (deck && id !== "create"){
+            setName(deck.name);
+            setFlashcards(deck.flashcards);
+
+        }
+    }, [deck])
+    
 
     const history = useHistory();
 
     
     const handleSubmit = (e) => {
+
+        if (id !== ""){
+            fetch("http://localhost:8000/decks/" + id,{
+                method: "DELETE"
+            }).then(()=>{
+                window.location = "/";
+            })
+        }
+
         e.preventDefault();
         const deck = { name, flashcards};
     
@@ -47,28 +69,36 @@ const Create = () => {
     }
 
     return ( 
-        <div className="create">
-            <p>Set Title</p>
-            <input type = "text" required value = {name} onChange = {(e)=>setName(e.target.value)}/>
+        <div>
+            {id !== "create" && isPending && <h2>Loading...</h2>}
+            {id !== "create" && error && <div>{ error }</div> }
+            {
 
-            <p>Flashcards</p>
+                <div className="create">
+                    
+                    <p>Title</p>
+                    <input type = "text" required value = {name} onChange = {(e)=>setName(e.target.value)}/>
 
-            <button onClick={() => {setFlashcards([...flashcards, ["",""]]);}}>Add a new card</button>
+                    <hr></hr>
 
-            {flashcards.map((flashcard, index)=>(
-                <div>
-                    <p>{index}</p>
-                    <input type = "text" value = {flashcard[0]} onChange = {(e)=>updateCard(index, e.target.value, flashcard[1])} />
-                    <input type = "text" value = {flashcard[1]} onChange = {(e)=>updateCard(index, flashcard[0], e.target.value)} />
+                    
+                    {flashcards.map((flashcard, index)=>(
+                        <div key = {index}>
+                            <input type = "text" value = {flashcard[0]} onChange = {(e)=>updateCard(index, e.target.value, flashcard[1])} />
+                            <input type = "text" value = {flashcard[1]} onChange = {(e)=>updateCard(index, flashcard[0], e.target.value)} />
 
+                        </div>
+                    ))}
+
+                    <button onClick={() => {setFlashcards([...flashcards, ["",""]]);}}>Add a new card</button>
+                    
+                    <hr></hr>
+                    <button onClick={handleSubmit}>Finish set</button>
+                    
                 </div>
-            ))}
-
-
-            <p>Finish</p>
-            <button onClick={handleSubmit}>Create set</button>
+            }
         </div>
-     );
+    );
 }
  
 export default Create;
